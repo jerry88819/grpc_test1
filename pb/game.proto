@@ -1,0 +1,22 @@
+syntax = "proto3" ;
+
+option go_package = "/pb";
+
+package pb ;
+
+service ServiceServer {
+    rpc Getname (GetIdRequest) returns (GetNameReply) {}
+    rpc MGetOname (stream GetIdRequest) returns (GetNameReply) {}
+    rpc OGetMname (GetIdRequest) returns ( stream GetNameReply) {}
+    rpc MGetMname (stream GetIdRequest) returns (stream GetNameReply) {}
+}
+
+// GetName
+
+message GetIdRequest {
+    string DbId = 1;
+}
+
+message GetNameReply {
+    string name = 1 ;
+}
